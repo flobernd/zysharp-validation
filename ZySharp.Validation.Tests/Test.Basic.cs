@@ -11,11 +11,11 @@ namespace ZySharp.Validation.Tests
 
         public static IEnumerable<object[]> DataNotNullRef => new List<object[]>
         {
-            new object[] { new RefTestCase<object >(new object(), false                               ) },
-            new object[] { new RefTestCase<string >(string.Empty, false                               ) },
-            new object[] { new RefTestCase<string >("test"      , false                               ) },
-            new object[] { new RefTestCase<Obj    >(Obj.A       , false                               ) },
-            new object[] { new RefTestCase<object >(null        , true , typeof(ArgumentNullException)) }
+            new object[] { new RefTestCase<object>(new object(), false                               ) },
+            new object[] { new RefTestCase<string>(string.Empty, false                               ) },
+            new object[] { new RefTestCase<string>("test"      , false                               ) },
+            new object[] { new RefTestCase<Obj   >(Obj.A       , false                               ) },
+            new object[] { new RefTestCase<object>(null        , true , typeof(ArgumentNullException)) }
         };
 
         [Theory]
