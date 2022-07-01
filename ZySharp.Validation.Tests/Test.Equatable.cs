@@ -65,11 +65,11 @@ namespace ZySharp.Validation.Tests
 
         public static IEnumerable<object[]> DataEqualRefMultiple => new List<object[]>
         {
-            new object[] { new RefTestCaseWithParam<object, object[]>(null  , new object[]{ Obj.A, null   }, false) },
-            new object[] { new RefTestCaseWithParam<Obj   , Obj[]   >(Obj.A , new       []{ Obj.B, Obj.A  }, false) },
-            new object[] { new RefTestCaseWithParam<Obj   , Obj[]   >(Obj.A , new       []{ Obj.B         }, true ) },
-            new object[] { new RefTestCaseWithParam<string, string[]>("A"   , new       []{ "B", "A"      }, false) },
-            new object[] { new RefTestCaseWithParam<string, string[]>("A"   , new       []{ "B", "C", "D" }, true ) }
+            new object[] { new RefTestCaseWithParam<object, object?[]>(null  , new object?[]{ Obj.A, null   }, false) },
+            new object[] { new RefTestCaseWithParam<Obj   , Obj[]    >(Obj.A , new        []{ Obj.B, Obj.A  }, false) },
+            new object[] { new RefTestCaseWithParam<Obj   , Obj[]    >(Obj.A , new        []{ Obj.B         }, true ) },
+            new object[] { new RefTestCaseWithParam<string, string[] >("A"   , new        []{ "B", "A"      }, false) },
+            new object[] { new RefTestCaseWithParam<string, string[] >("A"   , new        []{ "B", "C", "D" }, true ) }
         };
 
         [Theory]
@@ -77,7 +77,7 @@ namespace ZySharp.Validation.Tests
         public void Test_Equal_Ref_Multiple<T>(RefTestCaseWithParam<T, T[]> test)
             where T : class
         {
-            TestExtensions.TestValidation(test, v => v.Equal(test.Parameter));
+            TestExtensions.TestValidation(test, v => v.Equal(test.Parameter!));
         }
 
         public static IEnumerable<object[]> DataEqualValMultiple => new List<object[]>
@@ -98,7 +98,7 @@ namespace ZySharp.Validation.Tests
         public void Test_Equal_Val_Multiple<T>(ValTestCaseWithParam<T, T[]> test)
             where T : struct
         {
-            TestExtensions.TestValidation(test, v => v.Equal(test.Parameter));
+            TestExtensions.TestValidation(test, v => v.Equal(test.Parameter!));
         }
 
         #endregion Equal
@@ -161,11 +161,11 @@ namespace ZySharp.Validation.Tests
 
         public static IEnumerable<object[]> DataNotEqualRefMultiple => new List<object[]>
         {
-            new object[] { new RefTestCaseWithParam<object, object[]>(null  , new object[]{ Obj.A, null   }, true ) },
-            new object[] { new RefTestCaseWithParam<Obj   , Obj[]   >(Obj.A , new       []{ Obj.B, Obj.A  }, true ) },
-            new object[] { new RefTestCaseWithParam<Obj   , Obj[]   >(Obj.A , new       []{ Obj.B         }, false) },
-            new object[] { new RefTestCaseWithParam<string, string[]>("A"   , new       []{ "B", "A"      }, true ) },
-            new object[] { new RefTestCaseWithParam<string, string[]>("A"   , new       []{ "B", "C", "D" }, false) }
+            new object[] { new RefTestCaseWithParam<object, object?[]>(null , new object?[]{ Obj.A, null   }, true ) },
+            new object[] { new RefTestCaseWithParam<Obj   , Obj[]    >(Obj.A, new        []{ Obj.B, Obj.A  }, true ) },
+            new object[] { new RefTestCaseWithParam<Obj   , Obj[]    >(Obj.A, new        []{ Obj.B         }, false) },
+            new object[] { new RefTestCaseWithParam<string, string[] >("A"  , new        []{ "B", "A"      }, true ) },
+            new object[] { new RefTestCaseWithParam<string, string[] >("A"  , new        []{ "B", "C", "D" }, false) }
         };
 
         [Theory]
@@ -173,7 +173,7 @@ namespace ZySharp.Validation.Tests
         public void Test_NotEqual_Ref_Multiple<T>(RefTestCaseWithParam<T, T[]> test)
             where T : class
         {
-            TestExtensions.TestValidation(test, v => v.NotEqual(test.Parameter));
+            TestExtensions.TestValidation(test, v => v.NotEqual(test.Parameter!));
         }
 
         public static IEnumerable<object[]> DataNotEqualValMultiple => new List<object[]>
@@ -194,7 +194,7 @@ namespace ZySharp.Validation.Tests
         public void Test_NotEqual_Val_Multiple<T>(ValTestCaseWithParam<T, T[]> test)
             where T : struct
         {
-            TestExtensions.TestValidation(test, v => v.NotEqual(test.Parameter));
+            TestExtensions.TestValidation(test, v => v.NotEqual(test.Parameter!));
         }
 
         #endregion NotEqual

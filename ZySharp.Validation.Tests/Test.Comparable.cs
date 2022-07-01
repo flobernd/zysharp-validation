@@ -276,7 +276,7 @@ namespace ZySharp.Validation.Tests
         public void Test_InRange_Ref<T>(RefTestCaseWithParam<T, T[]> test)
             where T : class, IComparable<T>
         {
-            TestExtensions.TestValidation(test, v => v.InRange(test.Parameter[0], test.Parameter[1]));
+            TestExtensions.TestValidation(test, v => v.InRange(test.Parameter![0], test.Parameter![1]));
         }
 
         public static IEnumerable<object[]> DataInRangeVal => new List<object[]>
@@ -303,7 +303,7 @@ namespace ZySharp.Validation.Tests
         public void Test_InRange_Val<T>(ValTestCaseWithParam<T, T[]> test)
             where T : struct, IComparable<T>
         {
-            TestExtensions.TestValidation(test, v => v.InRange(test.Parameter[0], test.Parameter[1]));
+            TestExtensions.TestValidation(test, v => v.InRange(test.Parameter![0], test.Parameter![1]));
         }
 
         #endregion InRange

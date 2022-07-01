@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ZySharp.Validation.Tests
 {
     public sealed partial class Test
     {
-        private sealed class Obj :
+        private class Obj :
             IComparable<Obj>
         {
             public static readonly Obj A = new Obj { _v = 1 };
@@ -13,9 +14,9 @@ namespace ZySharp.Validation.Tests
 
             private int _v;
 
-            public int CompareTo(Obj other)
+            public int CompareTo(Obj? other)
             {
-                return (_v - other._v);
+                return Comparer<int?>.Default.Compare(_v, other?._v);
             }
         }
 

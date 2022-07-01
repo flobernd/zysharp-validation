@@ -8,7 +8,7 @@ namespace ZySharp.Validation
     public static partial class ValidateArgument
     {
         /// <summary>
-        /// Throws if the enumerable contains duplicate values.
+        /// Throws if the enumerable contains duplicate values for the specified property.
         /// </summary>
         /// <typeparam name="TValue">The type of the enumerable elements.</typeparam>
         /// <typeparam name="TKey">The type of the enumerable element keys.</typeparam>
@@ -22,7 +22,7 @@ namespace ZySharp.Validation
 
             return validator.Perform(() =>
             {
-                var duplicates = validator.Value
+                var duplicates = validator.Value!
                     .GroupBy(keySelector)
                     .Where(x => (x.Count() != 1))
                     .Select(x => x.Key)
